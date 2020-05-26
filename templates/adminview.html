@@ -39,8 +39,8 @@
         {% for i in context %}
             <tr>
                 <td>{{ i.srno }}</td>
-                <td>{{ i.email }}</td>
                 <td>{{ i.fullname }}</td>
+                <td>{{ i.email }}</td>
                 <td>{{ i.mobile }}</td>
                 <td class="text-center">
                     {% if i.email == request.session.admin.adminEmail %}

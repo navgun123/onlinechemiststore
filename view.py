@@ -257,7 +257,7 @@ def subcategoryupdate(request):
 
 @csrf_exempt
 def showCatName(request):
-    if 'admin' in request.session:
+    if 'chemist' in request.session:
         s = 'select catName,catid from category'
         result = Fetchall(s)
         lt = []
@@ -329,14 +329,13 @@ def addProduct(request):
 
 def viewallProduct(request):
     if 'chemist' in request.session:
-
         return render(request, 'viewallProduct.html')
     else:
         return redirect(chemistLogin)
 
 
 def deleteProduct(request):
-    if 'admin' in request.session:
+    if 'chemist' in request.session:
         s = 'delete from product where pid="{}"'.format(request.GET['pid'])
         result = Delete(s)
         return HttpResponse(result)
@@ -345,7 +344,7 @@ def deleteProduct(request):
 
 
 def filterSubCat(request):
-    if 'admin' in request.session:
+    if 'chemist' in request.session:
         s = 'select subname,subDescription,subid from subcategory where catid="{}"'.format(request.GET['cat'])
         # print(s)
         result = Fetchall(s)
@@ -385,7 +384,7 @@ def showProduct(request):
 
 @csrf_exempt
 def updateProduct(request):
-    if 'admin' in request.session:
+    if 'chemist' in request.session:
         # file = ''
         try:
             file = request.FILES['file']
@@ -948,7 +947,7 @@ def shipping(request):
                                  mobile))
                 response = conn.getresponse()
                 print(response)
-                return HttpResponse(s)
+            return HttpResponse(s)
         else:
             return HttpResponse('Data not valid')
 
@@ -973,7 +972,7 @@ def dispatched(request):
                                  mobile))
                 response = conn.getresponse()
                 print(response)
-                return HttpResponse(s)
+            return HttpResponse(s)
         else:
             return HttpResponse('Data not valid')
 
