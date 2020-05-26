@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+  <title>Pharma &mdash; Colorlib Template</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% include 'publicHeader.html' %}
+</head>
+
+<body>
+
+  <div class="site-wrap">
+    {% if request.session.client %}
+        {% include 'clientNavbar.html' %}
+    {% else %}
+        {% include 'publicNavbar.html' %}
+    {% endif %}
+    <div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong
+              class="text-black">Payment Fail</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <span class="icon-cancel display-3 text-warning"></span>
+            <h2 class="display-3 text-black">Payment Fail!</h2>
+            <p class="lead text-danger mb-5">You order's payment is cancelled Because Of Some Techinical Error.</p>
+            <p class="lead text-danger mb-5">We are very sorry. Please Try after some time</p>
+            <p><a href="shop" class="btn btn-md height-auto px-4 py-3 btn-primary">Back to store</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+      {% include 'publicFooter.html' %}
+  </div>
+</body>
+
+</html>

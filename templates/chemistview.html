@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ title }}</title>
+    <script src="{% static 'myjs/adminview.js' %}"></script>
+    {% include 'adminHeader.html' %}
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+{% if message %}
+    <script>
+        alert('{{ message }}');
+    </script>
+{% endif %}
+{% include 'adminNavbar.html' %}
+<div class="container mx-auto jumbotron my-4">
+    <div class="display-4 text-center font-weight-bold">Chemist View</div>
+    <hr class="bg-danger">
+    <table class="table table-bordered table-hover bg-light">
+        <thead class="thead-dark">
+        <tr class="text-center">
+            <th scope="col">Email</th>
+            <th scope="col">Shop Name</th>
+            <th scope="col">State</th>
+            <th scope="col">City</th>
+            <th scope="col">License</th>
+            <th scope="col">Address</th>
+            <th scope="col" colspan="2">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in context %}
+            <tr>
+                <td>{{ i.email }}</td>
+                <td>{{ i.dname }}</td>
+                <td>{{ i.state }}</td>
+                <td>{{ i.city }}</td>
+                <td>{{ i.licensenumber }}</td>
+                <td>{{ i.address }}</td>
+                <td class="text-center">
+                    <button type="button" class="btn btn-outline-danger" onclick="deletechemist('{{ i.email }}')">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-primary" onclick="chemistupdatemodel({{ i }})"><i class="fa fa-edit"></i>
+                    </button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="chemistupdatemodel" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Chemist Update</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="chemistupdate">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" readonly name="email" id="email" autofocus data-rule-required="true">
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="dname">Shop Name</label>
+                                <input type="text" class="form-control" name="dname" id="dname"
+                                       data-rule-required="true">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="licensenumber">License Number</label>
+                                <input type="tel" class="form-control" name="licensenumber" id="licensenumber"
+                                       data-rule-required="true">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="state">State</label>
+                                <select name="state" id="state" class="form-control">
+                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                    <option value="West Bengal">West Bengal</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Rajasthan">Rajasthan</option>
+                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                    <option value="Gujarat">Gujarat</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                    <option value="Odisha">Odisha</option>
+                                    <option value="Kerala">Kerala</option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Jharkhand">Jharkhand</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                    <option value="Uttarakhand">Uttarakhand</option>
+                                    <option value="Haryana">Haryana</option>
+                                    <option value="Tripura">Tripura</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Meghalaya">Meghalaya</option>
+                                    <option value="Goa">Goa</option>
+                                    <option value="Manipur">Manipur</option>
+                                    <option value="Mizoram">Mizoram</option>
+                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                    <option value="Nagaland">Nagaland</option>
+                                    <option value="Puducherry">Puducherry</option>
+                                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                    <option value="Sikkim">Sikkim</option>
+                                    <option value="Daman and Diu">Daman and Diu</option>
+                                    <option value="Lakshadweep">Lakshadweep</option>
+                                    <option value="Chandigarh">Chandigarh</option>
+                                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                    <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+                                    <option value="Ladakh ">Ladakh</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" class="form-control" name="city" id="city" data-rule-required="true">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <textarea class="form-control" name="address" id="address"
+                                          data-rule-required="true"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="button" onclick="chemistupdate()" value="Submit" class="btn btn-outline-primary w-50">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('#chemistupdate').validate();
+</script>
+</body>
+</html>

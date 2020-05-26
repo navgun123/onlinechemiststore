@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <title>Pharma &mdash; Colorlib Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% include 'publicHeader.html' %}
+</head>
+
+<body>
+{% if request.session.client %}
+    {% include 'clientNavbar.html' %}
+{% else %}
+    {% include 'publicNavbar.html' %}
+{% endif %}
+<div class="site-wrap">
+    <div class="bg-light py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-0">
+                    <a href="/">Home</a> <span class="mx-2 mb-0">/</span>
+                    <strong class="text-black">Cart</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="site-section">
+        <div class="container">
+            <div class="row mb-5">
+                <form class="col-md-12" method="post">
+                    <div class="site-blocks-table">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                    <th class="pro-thumbnail">Sr No.</th>
+                                    <th class="pro-title">Bill No.</th>
+                                    <th class="pro-price">Bill Date</th>
+                                    <th class="pro-price">Address</th>
+                                    <th class="pro-quantity">Payment Method</th>
+                                    <th class="pro-subtotal">Grand Total</th>
+                                    <th class="pro-remove">Status</th>
+                                    <th class="pro-remove">View Detail</th>
+                                    <th class="pro-remove">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in context %}
+                                    <tr>
+                                        <td>{{ i.srno }}</td>
+                                        <td>{{ i.billid }}</td>
+                                        <td>{{ i.billtime }}</td>
+                                        <td>{{ i.address }}</td>
+                                        <td>{{ i.paymentmethod }}</td>
+                                        <td>&#8377; {{ i.grandtotal }}</td>
+                                        <td>{{ i.status }}</td>
+                                        <td><a style="font-size: 2em" href="cientproductdetail?billid={{ i.billid }}"><i
+                                                class="icon-info-circle text-primary"></i></a></td>
+                                        <td>{% if i.status == 'pending' %}
+                                            <a type="button" style="font-size: 2em" onclick="cancelledmodal('{{ i.billid }}')"><i
+                                                    class="icon-trash text-danger"></i></a>
+                                        {% else %}
+                                            <a type="button" style="font-size: 2em"><i class="icon-trash text-muted" style="cursor: not-allowed;"></i></a>
+
+                                        {% endif %}
+
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row mb-5">
+                        <div class="col-md-6">
+                            <a href="shop" class="btn btn-outline-primary btn-md btn-block">Continue Shopping</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title mx-auto text-danger font-weight-bolder">Cancel Order</h1>
+            </div>
+            <form action="#" method="get">
+                <div class="modal-body">
+                    <input type="hidden" name="billid" id="billid">
+                    <div class="form-group">
+                        <label for="#" class="h2">Remarks/Reason</label>
+                        <textarea name="remarks" id="remarks" class="form-control" rows="4"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" onclick="cancelledorder()" value="Submit" class="btn btn-cart bg-primary">
+                    <button type="button" class="btn bg-danger" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<script src="{% static 'myjs/my-account.js' %}"></script>
+{% include 'publicFooter.html' %}
+</body>
+
+</html>

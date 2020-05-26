@@ -1,0 +1,57 @@
+{% load static %}
+<div class="site-navbar py-2">
+    <div class="search-wrap">
+        <div class="container">
+            <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
+            <form action="shop" method="get">
+                <div class="ui-widget">
+                    <input type="search" class="form-control" name="search" id="search"
+                           placeholder="Search Medicines by Name...">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="logo">
+                <div class="site-logo">
+                    <a href="/" class="js-logo-clone">HealthFit</a>
+                </div>
+            </div>
+            <div class="main-nav d-none d-lg-block">
+                <nav class="site-navigation text-right text-md-center" role="navigation">
+                    <ul class="site-menu js-clone-nav d-none d-lg-block">
+                        <li><a href="/">Home</a></li>
+                        <li class="has-children" id="navstore">
+                        </li>
+                        <li class="has-children" id="navcatsub">
+                        </li>
+                        <li><a href="about">About</a></li>
+                        <li><a href="contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="icons">
+                <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
+                <div class="d-inline-flex" style="cursor: pointer">
+                    <div data-toggle="dropdown"><i class="text-dark icon-user-circle"></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <li><a class="dropdown-item" href="clientLogin">Login</a></li>
+                        <li><a class="dropdown-item" href="clientRegistration">Sign Up</a></li>
+                        {#                        <a class="dropdown-item" href="#">Link 3</a>#}
+                    </div>
+                </div>
+                <a href="cart" class="icons-btn d-inline-block bag">
+                    <span class="icon-shopping-bag"></span>
+                    <span class="number" id="cardsession">{% if request.session.product %}
+                        {{ request.session.product|length }}
+                    {% else %}
+                        0
+                    {% endif %} </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <title>Pharma &mdash; Colorlib Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% include 'publicHeader.html' %}
+</head>
+
+<body>
+
+<div class="site-wrap">
+
+{% if request.session.client %}
+    {% include 'clientNavbar.html' %}
+{% else %}
+    {% include 'publicNavbar.html' %}
+{% endif %}
+    <div class="bg-light py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-0"><a href="/">Home</a> <span class="mx-2 mb-0">/</span> <a
+                        href="shop">Store</a> <span class="mx-2 mb-0">/</span> <strong
+                        class="text-black">{{ i.productname }}</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 mr-auto">
+                    <div class="border text-center">
+                        <img src="{% static 'media/' %}{{ i.productimage }}" alt="Image" class="img-fluid p-5">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h2 class="text-black">{{ i.productname }}</h2>
+                    <p>{{ i.productdesc }}</p>
+                    <p>
+                        <del>&#8377; {{ i.productprice }}</del>
+                        <strong class="text-primary h4">{{ i.discountedprice }}</strong></p>
+
+
+                    <div class="mb-5">
+                        <div class="input-group mb-3" style="max-width: 220px;">
+                            <div class="input-group-prepend">
+                                <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                            </div>
+                            <input type="text" class="form-control text-center" value="{{ i.qty }}" placeholder=""
+                                   aria-label="Example text with button addon" id="qty" aria-describedby="button-addon1">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <p>
+                        {% if i.productstock > 0 %}
+                            <button onclick="sessionProduct('{{ i.pid }}')"
+                                    class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Add To Card
+                            </button>
+                        {% else %}
+                            <button class="buy-now btn btn-sm height-auto px-4 py-3 btn-outline-warning">Out of Stock</button>
+                        {% endif %}
+                    </p>
+                    <i>Shop Today and Save &#8377; {{ i.savemoney }}</i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="bg-dark">
+    <script src="{% static 'myjs/productdetails.js' %}"></script>
+    {% include 'publicFooter.html' %}
+</div>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <title>Pharma &mdash; Colorlib Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% include 'publicHeader.html' %}
+    <style>
+        a.dropdown-item{
+            margin: 0;
+            padding: 4px;
+        }
+        a.dropdown-item:hover{
+            background: linear-gradient(white,gray);
+        }
+    </style>
+</head>
+<body>
+<div class="site-wrap">
+    {% if request.session.client %}
+        {% include 'clientNavbar.html' %}
+    {% else %}
+        {% include 'publicNavbar.html' %}
+    {% endif %}
+    {% if message %}
+        <script>alert('{{ message }}')</script>
+    {% endif %}
+    <div class="bg-light py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-0"><a href="/">Home</a> <span class="mx-2">/</span> <strong
+                        class="text-black">Store</strong></div>
+            </div>
+        </div>
+    </div>
+<div class="border border-dark text-right p-3">
+            <div class="text-uppercase text-black">Filter by</div>
+            <button type="button" class="btn btn-muted btn-md dropdown-toggle"
+                    id="dropdownMenuReference"
+                    data-toggle="dropdown">Reference</button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+                <a class="dropdown-item" href="shop">All</a>
+                <a class="dropdown-item" href="shop?sort=a-z">Name, A to Z</a>
+                <a class="dropdown-item" href="shop?sort=z-a">Name, Z to A</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="shop?sort=low-high">Price, low to high</a>
+                <a class="dropdown-item" href="shop?price=high-low">Price, high to low</a>
+                <div class="dropdown-divider"></div>
+                <a href="shop?load=50" class="dropdown-item">50% Discounted Items</a>
+            </div>
+        </div>
+    <div class="site-section">
+        <div class="container">
+            {% if context %}
+                {% if filter %}
+                <div class="display-4 text-dark text-center">Medicine Filter on: {{ filter }}</div>
+                {% endif %}
+                <div class="row">
+                    {% for i in context %}
+                        <div class="text-center item m-3"
+                             style="border: 1px solid black;border-bottom-left-radius: 10px;;border-bottom-right-radius: 10px;width: 30%">
+                            <span class="bg-warning text-danger float-left badge-pill position-absolute m-3">Sale &nbsp;{{ i.productdiscount }}%</span>
+                            <a href="shopsingle?pid={{ i.pid }}"><img src="{% static 'media/' %}{{ i.productimage }}"
+                                                                      class="img-fluid rounded"
+                                                                      style="width: 100%;height: 300px"
+                                                                      alt="Image"></a>
+                            <hr class="bg-warning">
+                            <h3 class="text-dark"><a href="shopsingle?pid={{ i.pid }}">{{ i.productname }}</a></h3>
+                            <p class="price">
+                                <del>&#8377; {{ i.productprice }}</del> &mdash; &#8377; {{ i.discountedprice }}
+                            </p>
+                            {% if i.productstock > 0 %}
+                                <button onclick="sessionProduct('{{ i.pid }}')"
+                                        class="btn btn-primary px-5 py-3 badge-pill m-2">Add To Card
+                                </button>
+                            {% else %}
+                                <button class="btn btn-warning px-5 py-3 badge-pill m-2">Out of Stock</button>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <hr>
+            {% else %}
+                <h3 class="text-center">Opps! No result Found. Try it with another word.</h3>
+            {% endif %}
+        </div>
+    </div>
+    <hr class="bg-dark">
+{#    <script src="{% static 'myjs/clientNavbar.js' %}"></script>#}
+    <script src="{% static 'myjs/index.js' %}"></script>
+    {% include 'publicFooter.html' %}
+</div>
+
+</body>
+
+</html>

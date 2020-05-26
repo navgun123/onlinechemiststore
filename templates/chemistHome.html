@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chemist Home</title>
+    {#    <script src="{% static 'myjs/adminHome.js' %}"></script>#}
+    {% include 'adminHeader.html' %}
+</head>
+<body style="background: antiquewhite">
+{% include 'chemistNavbar.html' %}
+{% if message %}
+    <script>
+        alert('{{ message }}');
+    </script>
+{% endif %}
+<br>
+<div class="my-2 table-responsive container" style="box-shadow: 0 0 30px black;background: white">
+<div class="display-4 font-weight-bolder text-danger text-center bg-white p-3" style="letter-spacing: 10px">Report</div>
+    <table class="table table-bordered table-light table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Product Name</th>
+            <th scope="col">Payment</th>
+            <th scope="col">Qunatity</th>
+            <th scope="col">Person Recieve</th>
+            <th scope="col">Product Image</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if context %}
+            {% for i in context %}
+                <tr>
+                    <td>{{ i.productname }}</td>
+                    <td>{{ i.payment }}</td>
+                    <td>{{ i.quantity }}</td>
+                    <td>{{ i.clientemail }}</td>
+                    <td><img src="{% static 'media/' %}{{ i.productimage }}" style="width: 100px;height: 100px" alt=""></td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="5" class="display-4 text-center font-weight-bolder">No data Found</td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

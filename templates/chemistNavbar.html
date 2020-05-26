@@ -1,0 +1,125 @@
+<style>
+    .error {
+        color: red;
+    }
+    nav{
+        background: white;
+        box-shadow: 0 0 30px black;
+        color
+        : black;
+    }
+    .navbar-dark .navbar-nav .nav-link {
+        color: black !important;
+    }
+    li a:hover{
+        transition: 1s ease-in;
+        background: cornflowerblue;
+        color: black;
+        border-radius: 5px;
+    }
+</style>
+<script>
+    function chemistChangePassword() {
+        var formdata = new FormData();
+        var controls = document.getElementById('chemistChangePassword').elements;
+        for (var i of controls) {
+            formdata.append(i.name, i.value);
+        }
+        var xml = new XMLHttpRequest();
+        xml.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var output = this.response;
+                if (output == 'success') {
+                    $('#mymodalchangepassword').modal('hide')
+                } else {
+                    document.getElementById('error').innerHTML = `<span class="alert alert-danger">${output}</span>`
+                }
+            }
+        };
+        xml.open('POST', 'chemistChangePassword', true);
+        xml.send(formdata);
+    }
+</script>
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand pr-2" href="allchemist" style="border-right: 2px red solid;color: black!important;">HealthFit</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Medicine
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="addProduct">Add Medicine</a>
+                    <a class="dropdown-item" href="viewallProduct">View Medicine</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Setting
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <button type="button" class="dropdown-item" data-toggle="modal"
+                            data-target="#mymodalchangepassword">
+                        Change Password
+                    </button>
+                    <a href="chemistlogout" class="dropdown-item">Logout</a>
+                </div>
+            </li>
+        </ul>
+        <span style="color: black !important;">Welcome, {{ request.session.chemist.chemistEmail }}</span>
+
+    </div>
+</nav>
+<div class="modal fade" tabindex="-1" role="dialog" id="mymodalchangepassword">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Chemist Change Password</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="chemistChangePassword">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="password">Old Password</label>
+                        <input type="password" class="form-control" id="opassw" name="opassw">
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="password">New Password</label>
+                                <input type="password" class="form-control" id="npassw">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="cpassword">Confirm Password</label>
+                                <input type="password" class="form-control" data-rule-equalto="#npassw"
+                                       name="npassw" data-msg-equalto="Please same Password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="button" onclick="chemistChangePassword()" value="Submit"
+                               class="btn btn-outline-primary w-50">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <div id="error" class="text-center"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $("#chemistChangePassword").validate();
+</script>

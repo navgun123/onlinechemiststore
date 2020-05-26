@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <title>Pharma &mdash; Colorlib Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    {% include 'publicHeader.html' %}
+    <style>
+        .error {
+            color: red !important;
+        }
+    </style>
+</head>
+
+<body>
+{% if message %}
+    <script>
+    alert('{{ message }}')
+    </script>
+{% endif %}
+<div class="site-wrap">
+    {% if request.session.client %}
+        {% include 'clientNavbar.html' %}
+    {% else %}
+        {% include 'publicNavbar.html' %}
+    {% endif %}
+    <div class="bg-light py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-0">
+                    <a href="/">Home</a> <span class="mx-2 mb-0">/</span>
+                    <strong class="text-black">Checkout</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="site-section">
+    <div class="container">
+        {% if 'client' not in request.session %}
+            <div class="row mb-5">
+                <div class="col-md-12">
+                    <div class="bg-light rounded p-3">
+                        <p class="mb-0">Returning customer? <a href="clientLogin" class="d-inline-block">Click here</a>
+                            to login</p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <form id="myform" method="post">
+            <div class="row">
+                <div class="col-md-6 mb-5 mb-md-0">
+                    <h2 class="h3 mb-3 text-black">Billing Details</h2>
+                    <div class="p-3 p-lg-5 border">
+                        <div class="form-group">
+                            <input type="hidden" name="disphone" id="disphone"
+                                   value="{{ request.session.client.clientPhone }}">
+                            <input type="hidden" name="disemail" id="disemail" value="{{ request.session.client.clientEmail }}">
+                            <label for="town" class="required">Town / City</label>
+                            <select id="town" name="town" class="form-control" data-rule-required="true">
+                                <option value="#">--Choose City--</option>
+                                <option value="Amritsar">Amritsar</option>
+                                <option value="Chandigarh">Chandigarh</option>
+                                <option value="Ludhiana">Ludhiana</option>
+                                <option value="Jalandhar">Jalandhar</option>
+                                <option value="Patiala">Patiala</option>
+                                <option value="Bathinda">Bathinda</option>
+                                <option value="Hoshiarpur">Hoshiarpur</option>
+                                <option value="Mohali">Mohali</option>
+                                <option value="Pathankot">Pathankot</option>
+                                <option value="Moga">Moga</option>
+                                <option value="Abohar">Abohar</option>
+                                <option value="Malerkotla">Malerkotla</option>
+                                <option value="Khanna">Khanna</option>
+                                <option value="Phagwara">Phagwara</option>
+                                <option value="Muktasar">Muktasar</option>
+                                <option value="Barnala">Barnala</option>
+                                <option value="Rajpura">Rajpura</option>
+                                <option value="Firozpur">Firozpur</option>
+                                <option value="Kapurthala">Kapurthala</option>
+                                <option value="Sunam">Sunam</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label for="street-address" class="required mt-20">Street address</label>
+                                <textarea id="streetAddress" rows="3" name="streetAddress" class="form-control"
+                                          placeholder="Street address Line 1"
+                                          data-rule-required="true"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="c_postal_zip" class="text-black">Posta / Zip <span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="zipcode" data-rule-required="true"
+                                   placeholder="Postal code/ Zipcode Code" name="zipcode">
+                        </div>
+                        <div class="form-group">
+                            <label for="ordernote">Reviews</label>
+                            <textarea name="ordernote" class="form-control" id="ordernote" cols="30" rows="3"
+                                      placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row mb-5">
+                        <div class="col-md-12">
+                            <h2 class="h3 mb-3 text-black">Your Order</h2>
+                            <div class="p-3 p-lg-5 border">
+                                <table class="table site-block-order-table mb-5">
+                                    <thead>
+                                    <th>Product</th>
+                                    <th>Total</th>
+                                    </thead>
+                                    <tbody>
+                                    {% for i in request.session.product %}
+                                        <tr>
+                                            <td><a class="text-dark m-0 p-0" href="shopsingle?pid={{ i.0 }}">{{ i.1 }}
+                                                <strong>
+                                                    ( {{ i.9 }}</strong>
+                                                <strong> × {{ i.7 }} )</strong></a>
+                                            </td>
+                                            <td>&#8377; {{ i.8 }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    <tr>
+                                        <td class="text-black font-weight-bold"><strong>Order Total</strong></td>
+                                        <td class="text-black font-weight-bold">
+                                            <strong>&#8377; {{ grandtotal }}</strong></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="h3">Payment Method</div>
+                                <div class="border p-3">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="cashon" name="paymentmethod" value="cash"
+                                               class="custom-control-input" checked/>
+                                        <label class="custom-control-label" for="cashon">Cash On
+                                            Delivery</label>
+                                    </div>
+
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="directbank" name="paymentmethod" value="online"
+                                               class="custom-control-input"/>
+                                        <label class="custom-control-label" for="directbank">Online
+                                            Payment</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" name="grandtotal" id="grandtotal" value="{{ grandtotal }}">
+                            <div class="form-group">
+                                <button type="button" id="placeOrder" class="btn btn-primary btn-lg btn-block"
+                                        onclick="payment()">Place
+                                    Order
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- </form> -->
+</div>
+<script src="{% static 'myjs/checkout.js' %}"></script>
+{% include 'publicFooter.html' %}
+<script>
+    $('#myform').validate();
+</script>
+</body>
+
+</html>
