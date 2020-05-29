@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 10, 2020 at 06:11 AM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.10
+-- Host: localhost
+-- Generation Time: May 27, 2020 at 08:25 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -73,18 +73,19 @@ CREATE TABLE `bill` (
 --
 
 INSERT INTO `bill` (`billID`, `datatime`, `grandtotal`, `payment_method`, `city`, `zipcode`, `address`, `remarks`, `trackid`, `companyname`, `trackurl`, `email`, `status`, `personrecieved`, `cancelledremarks`) VALUES
-(1, '2020-02-03 14:14:25', 1018.00, 'cash', 'Jalandhar', 70166, 'Architecto delectus.', 'Laboriosam', 926789, 'Greene and Gilliam Inc', 'https://www.futivepuqukajel.mobi', 'client@gmail.com', 'Dispatched', '', 'Mollit seq'),
-(2, '2020-02-03 14:16:48', 1018.00, 'cash', 'Jalandhar', 66390, 'Iure quasi ullam min.', 'Laboriosam', 926789, 'Greene and Gilliam Inc', 'https://www.futivepuqukajel.mobi', 'client@gmail.com', 'Dispatched', '', 'Libero ut'),
-(3, '2020-02-03 14:19:43', 1018.00, 'cash', 'Pathankot', 76394, 'Culpa, aliqua. Ea vo.', 'Laboriosam', 926789, 'Greene and Gilliam Inc', 'https://www.futivepuqukajel.mobi', 'client@gmail.com', 'Dispatched', '', 'Pariatur'),
-(4, '2020-02-03 14:25:25', 510.00, 'cash', 'Bathinda', 66390, 'Molestiae culpa, aut.', 'Laboriosam', 926789, 'Greene and Gilliam Inc', 'https://www.futivepuqukajel.mobi', 'client@gmail.com', 'Dispatched', '', NULL),
-(5, '2020-02-03 14:40:45', 2159.00, 'online', 'Malerkotla', 20591, 'Irure itaque odit iu.', 'Laboriosam', 926789, 'Greene and Gilliam Inc', 'https://www.futivepuqukajel.mobi', 'client@gmail.com', 'Dispatched', '', NULL),
-(6, '2020-02-03 15:19:01', 2159.00, 'online', 'Abohar', 62691, 'Sunt iure ut proiden.', 'Laboriosam', 926789, 'Greene and Gilliam Inc', 'https://www.futivepuqukajel.mobi', 'client@gmail.com', 'Dispatched', '', NULL),
-(7, '2020-02-03 15:22:01', 2159.00, 'online', 'Abohar', 62691, 'Sunt iure ut proiden.', 'Laboriosam', 926789, 'Greene and Gilliam Inc', 'https://www.futivepuqukajel.mobi', 'client@gmail.com', 'Dispatched', '', NULL),
-(8, '2020-02-03 15:22:46', 1034.00, 'online', 'Mohali', 75384, 'Deserunt.', 'Laboriosam', 926789, 'Greene and Gilliam Inc', 'https://www.futivepuqukajel.mobi', 'client@gmail.com', 'Dispatched', '', NULL),
+(1, '2020-02-03 14:14:25', 1018.00, 'cash', 'Jalandhar', 70166, 'Architecto delectus.', 'Tenetur iure dolor a', 723456, 'Park Lane Co', 'https://www.zavose.co', 'client@gmail.com', 'Dispatched', 'shivam', 'Mollit seq'),
+(2, '2020-02-03 14:16:48', 1018.00, 'cash', 'Jalandhar', 66390, 'Iure quasi ullam min.', 'Tenetur iure dolor a', 723456, 'Park Lane Co', 'https://www.zavose.co', 'client@gmail.com', 'Dispatched', 'shivam', 'Libero ut'),
+(3, '2020-02-03 14:19:43', 1018.00, 'cash', 'Pathankot', 76394, 'Culpa, aliqua. Ea vo.', 'Tenetur iure dolor a', 723456, 'Park Lane Co', 'https://www.zavose.co', 'client@gmail.com', 'Dispatched', 'shivam', 'Pariatur'),
+(4, '2020-02-03 14:25:25', 510.00, 'cash', 'Bathinda', 66390, 'Molestiae culpa, aut.', 'Tenetur iure dolor a', 723456, 'Park Lane Co', 'https://www.zavose.co', 'client@gmail.com', 'Dispatched', 'shivam', NULL),
+(5, '2020-02-03 14:40:45', 2159.00, 'online', 'Malerkotla', 20591, 'Irure itaque odit iu.', 'Tenetur iure dolor a', 723456, 'Park Lane Co', 'https://www.zavose.co', 'client@gmail.com', 'Dispatched', 'shivam', NULL),
+(6, '2020-02-03 15:19:01', 2159.00, 'online', 'Abohar', 62691, 'Sunt iure ut proiden.', 'Tenetur iure dolor a', 723456, 'Park Lane Co', 'https://www.zavose.co', 'client@gmail.com', 'Dispatched', 'shivam', NULL),
+(7, '2020-02-03 15:22:01', 2159.00, 'online', 'Abohar', 62691, 'Sunt iure ut proiden.', 'Tenetur iure dolor a', 723456, 'Park Lane Co', 'https://www.zavose.co', 'client@gmail.com', 'Dispatched', 'shivam', NULL),
+(8, '2020-02-03 15:22:46', 1034.00, 'online', 'Mohali', 75384, 'Deserunt.', 'Tenetur iure dolor a', 723456, 'Park Lane Co', 'https://www.zavose.co', 'client@gmail.com', 'Dispatched', 'shivam', NULL),
 (9, '2020-02-03 17:17:06', 187.00, 'cash', 'Jalandhar', 30970, 'Totam elit, laudanti.', 'Ab incidid', 815678, 'Bennett and Lynn Co', 'https://www.xyciqabago.info', 'pekacepy@rarexijowi.com', 'Dispatched', 'Kapil Ke Dada ji', NULL),
 (10, '2020-02-03 17:18:45', 27.00, 'cash', 'Mohali', 48628, 'Distinctio. Voluptat.', 'Ab incidid', 815678, 'Bennett and Lynn Co', 'https://www.xyciqabago.info', 'pekacepy@rarexijowi.com', 'Dispatched', 'Kapil Ke Dada ji', 'Fugit con'),
 (11, '2020-02-03 17:22:16', 510.00, 'cash', 'Hoshiarpur', 71016, 'Qui mollit voluptate.', 'Ab incidid', 815678, 'Bennett and Lynn Co', 'https://www.xyciqabago.info', 'pekacepy@rarexijowi.com', 'Dispatched', 'Kapil Ke Dada ji', NULL),
-(12, '2020-02-03 17:22:45', 381.00, 'cash', 'Mohali', 78060, 'Quas quod dolores et.', 'Est conse', NULL, NULL, NULL, 'pekacepy@rarexijowi.com', 'cancelled', NULL, 'Animi id');
+(12, '2020-02-03 17:22:45', 381.00, 'cash', 'Mohali', 78060, 'Quas quod dolores et.', 'Est conse', NULL, NULL, NULL, 'pekacepy@rarexijowi.com', 'cancelled', NULL, 'Animi id'),
+(13, '2020-05-26 11:40:07', 281.00, 'online', 'Amritsar', 143001, 'hall gate', 'Tenetur iure dolor a', 723456, 'Park Lane Co', 'https://www.zavose.co', 'client@gmail.com', 'Dispatched', 'shivam', NULL);
 
 -- --------------------------------------------------------
 
@@ -126,7 +127,8 @@ INSERT INTO `billdetail` (`billdetailid`, `price`, `quantity`, `productid`, `bil
 (19, 27.27, 1, 10, 10),
 (20, 440.51, 1, 5, 11),
 (21, 69.90, 1, 6, 11),
-(22, 381.92, 1, 14, 12);
+(22, 381.92, 1, 14, 12),
+(23, 281.92, 2, 12, 13);
 
 -- --------------------------------------------------------
 
@@ -155,6 +157,29 @@ INSERT INTO `category` (`catid`, `catName`, `catDescp`) VALUES
 (24, 'Stimulants', 'methylphenidate, amphetamine'),
 (25, 'Tranquilizers', 'meprobamate, chlorpromazine, reserpine, chlordiazepoxide, diazepam, and alprazolam'),
 (26, 'Statins', 'lovastatin, pravastatin, and simvastatin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chemist`
+--
+
+CREATE TABLE `chemist` (
+  `email` varchar(50) NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `state` varchar(50) NOT NULL,
+  `licensenumber` varchar(50) NOT NULL,
+  `displayname` varchar(100) NOT NULL,
+  `address` text NOT NULL,
+  `password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `chemist`
+--
+
+INSERT INTO `chemist` (`email`, `city`, `state`, `licensenumber`, `displayname`, `address`, `password`) VALUES
+('mazalahyw@mailinator.net', 'Ghazipur', 'Lakshadweep', 'q12345y6hgbvcdswsew345', 'apollo pharmacy', 'Quia quia porro debi', 'demo');
 
 -- --------------------------------------------------------
 
@@ -191,64 +216,65 @@ CREATE TABLE `product` (
   `productdiscount` int(11) NOT NULL,
   `productdesc` text NOT NULL,
   `productimage` varchar(100) NOT NULL,
-  `subid` int(11) NOT NULL
+  `subid` int(11) NOT NULL,
+  `chemistemail` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`pid`, `productname`, `productprice`, `productstock`, `productdiscount`, `productdesc`, `productimage`, `subid`) VALUES
-(1, 'Acetaminophen', 307, 419, 85, 'Voluptate ', '2147product_01.png', 6),
-(2, 'Adderall', 41, 497, 13, 'Voluptate ', '9413product_02.png', 6),
-(3, 'Alprazolam', 905, 427, 13, 'Rerum ipsa', '9359product_03.png', 7),
-(4, 'Amitriptyline', 893, 181, 22, 'Voluptas d', '1016product_04.png', 7),
-(5, 'Amlodipine', 899, 188, 51, 'Velit tem', '2558product_04.png', 9),
-(6, 'Amoxicillin', 699, 831, 90, 'Impedit a', '2057product_05.png', 9),
-(7, 'Ativan', 315, 92, 73, 'Incididunt', '9850product_06.png', 9),
-(8, 'Atorvastatin', 443, 555, 59, 'Ipsa in s', '2335product_02.png', 11),
-(9, 'Azithromycin', 271, 328, 45, 'Quis ad in', '6453product_07_large.png', 11),
-(10, 'Ciprofloxacin', 101, 166, 73, 'Nam cupidi', '2860Paracetamol_Tablets_500mg_-_32_Tablets_(Brand_May_Vary)_31.jpg', 12),
-(11, 'Citalopram', 660, 875, 68, 'Occaecat e', '4003product_07_large.png', 16),
-(12, 'Clindamycin', 881, 202, 84, 'Dignissimo', '8436products_1.png', 17),
-(13, 'Clonazepam', 827, 342, 23, 'Beatae ali', '6880products_1.png', 18),
-(14, 'Codeine', 616, 424, 38, 'Nemo accus', '8868hero_1.jpg', 18),
-(15, 'Cyclobenzaprine', 717, 840, 89, 'Veniam re', '8716product_01.png', 19),
-(16, 'Cymbalta', 994, 656, 97, 'Dolorem qu', '6149DABURAJ01A-1.jpg', 20),
-(17, 'Doxycycline', 340, 324, 33, 'Neque qui ', '6763product_06.png', 21),
-(18, 'Gabapentin', 301, 257, 21, 'Voluptas e', '97hero_1.jpg', 22),
-(19, 'Hydrochlorothiazide', 365, 975, 29, 'Recusandae', '2018product_01.png', 23),
-(20, 'Ibuprofen', 777, 759, 71, 'Exercitati', '8069product_02.png', 24),
-(21, 'Lexapro', 213, 913, 97, 'Rerum vero', '7723product_03.png', 25),
-(22, 'Lisinopril', 178, 982, 81, 'Occaecat a', '2066product_04.png', 26),
-(23, 'Loratadine', 951, 143, 95, 'Labore iru', '5736product_05.png', 27),
-(24, 'Lorazepam', 774, 861, 40, 'Corrupti ', '3249product_06.png', 28),
-(25, 'Losartan', 269, 670, 20, 'Incididunt', '3041product_04.png', 29),
-(26, 'Lyrica', 736, 703, 71, 'Aspernatur', '9014product_05.png', 30),
-(27, 'Meloxicam', 562, 530, 66, 'Suscipit s', '4009product_02.png', 31),
-(28, 'Metformin', 33, 42, 46, 'Dolorem al', '5249product_04.png', 32),
-(29, 'Metoprolol', 445, 913, 37, 'Possimus ', '549product_06.png', 32),
-(30, 'Naproxen', 720, 142, 12, 'Est nihil', '8936hero_1.jpg', 33),
-(31, 'Omeprazole', 890, 760, 60, 'Consequatu', '9024product_07_large.png', 34),
-(32, 'Oxycodone', 677, 876, 43, 'Error est', '2296product_03.png', 35),
-(33, 'Pantoprazole', 988, 200, 96, 'Non non mo', '8969products_1.png', 36),
-(34, 'Lyrica', 692, 814, 91, 'Sint nulla', '204hero_1.jpg', 30),
-(35, 'Lyrica', 327, 85, 95, 'Ut molesti', '8125product_05.png', 32),
-(36, 'Prednisone', 597, 879, 30, 'Eveniet e', '4244product_01.png', 37),
-(37, 'Tramadol', 136, 646, 30, 'Veniam fu', '1617product_07_large.png', 38),
-(38, 'Trazodone', 885, 456, 24, 'Fugiat cup', '3369product_03.png', 39),
-(39, 'Viagra', 731, 60, 95, 'Et duis un', '2670product_06.png', 40),
-(40, 'Wellbutrin', 414, 772, 54, 'Soluta ab ', '6909product_07_large.png', 41),
-(41, 'Xanax', 97, 292, 45, 'Doloribus ', '8315product_05.png', 41),
-(42, 'Zoloft', 739, 350, 73, 'Unde cum d', '8941Paracetamol_Tablets_500mg_-_32_Tablets_(Brand_May_Vary)_31.jpg', 42),
-(43, 'Atenolol', 291, 316, 81, 'Consequunt', '4125products_1.png', 43),
-(44, 'Atropine', 740, 930, 77, 'Ad cupidat', '1740hero_1.jpg', 44),
-(45, 'Aleve', 715, 594, 30, 'Veniam te', '2139product_01.png', 45),
-(46, 'Azelastine', 555, 918, 32, 'Adipisci c', '1259product_05.png', 46),
-(47, 'Azithromycin ophthalmic', 767, 691, 87, 'Eos conse', '2754product_06.png', 47),
-(48, 'Aztreonam', 146, 563, 6, 'Voluptates', '6534product_02.png', 48),
-(49, 'Azuphen MB', 556, 885, 76, 'Illo labor', '7879product_06.png', 49),
-(50, 'Azilsartan Kamedoxomil', 708, 831, 67, 'Rerum eaqu', '4522hero_1.jpg', 50);
+INSERT INTO `product` (`pid`, `productname`, `productprice`, `productstock`, `productdiscount`, `productdesc`, `productimage`, `subid`, `chemistemail`) VALUES
+(1, 'Acetaminophen', 307, 419, 85, 'Voluptate ', '2147product_01.png', 6, 'mazalahyw@mailinator.net'),
+(2, 'Adderall', 41, 497, 13, 'Voluptate ', '9413product_02.png', 6, 'mazalahyw@mailinator.net'),
+(3, 'Alprazolam', 905, 427, 13, 'Rerum ipsa', '9359product_03.png', 7, 'mazalahyw@mailinator.net'),
+(4, 'Amitriptyline', 893, 181, 22, 'Voluptas d', '1016product_04.png', 7, 'mazalahyw@mailinator.net'),
+(5, 'Amlodipine', 899, 188, 51, 'Velit tem', '2558product_04.png', 9, 'mazalahyw@mailinator.net'),
+(6, 'Amoxicillin', 699, 831, 90, 'Impedit a', '2057product_05.png', 9, 'mazalahyw@mailinator.net'),
+(7, 'Ativan', 315, 92, 73, 'Incididunt', '9850product_06.png', 9, 'mazalahyw@mailinator.net'),
+(8, 'Atorvastatin', 443, 555, 59, 'Ipsa in s', '2335product_02.png', 11, 'mazalahyw@mailinator.net'),
+(9, 'Azithromycin', 271, 328, 45, 'Quis ad in', '6453product_07_large.png', 11, 'mazalahyw@mailinator.net'),
+(10, 'Ciprofloxacin', 101, 166, 73, 'Nam cupidi', '2860Paracetamol_Tablets_500mg_-_32_Tablets_(Brand_May_Vary)_31.jpg', 12, 'mazalahyw@mailinator.net'),
+(11, 'Citalopram', 660, 875, 68, 'Occaecat e', '4003product_07_large.png', 16, 'mazalahyw@mailinator.net'),
+(12, 'Clindamycin', 881, 200, 84, 'Dignissimo', '8436products_1.png', 17, 'mazalahyw@mailinator.net'),
+(13, 'Clonazepam', 827, 342, 23, 'Beatae ali', '6880products_1.png', 18, 'mazalahyw@mailinator.net'),
+(14, 'Codeine', 616, 424, 38, 'Nemo accus', '8868hero_1.jpg', 18, 'mazalahyw@mailinator.net'),
+(15, 'Cyclobenzaprine', 717, 840, 89, 'Veniam re', '8716product_01.png', 19, 'mazalahyw@mailinator.net'),
+(16, 'Cymbalta', 994, 656, 97, 'Dolorem qu', '6149DABURAJ01A-1.jpg', 20, 'mazalahyw@mailinator.net'),
+(17, 'Doxycycline', 340, 324, 33, 'Neque qui ', '6763product_06.png', 21, 'mazalahyw@mailinator.net'),
+(18, 'Gabapentin', 301, 257, 21, 'Voluptas e', '97hero_1.jpg', 22, 'mazalahyw@mailinator.net'),
+(19, 'Hydrochlorothiazide', 365, 975, 29, 'Recusandae', '2018product_01.png', 23, 'mazalahyw@mailinator.net'),
+(20, 'Ibuprofen', 777, 759, 71, 'Exercitati', '8069product_02.png', 24, 'mazalahyw@mailinator.net'),
+(21, 'Lexapro', 213, 913, 97, 'Rerum vero', '7723product_03.png', 25, 'mazalahyw@mailinator.net'),
+(22, 'Lisinopril', 178, 982, 81, 'Occaecat a', '2066product_04.png', 26, 'mazalahyw@mailinator.net'),
+(23, 'Loratadine', 951, 143, 95, 'Labore iru', '5736product_05.png', 27, 'mazalahyw@mailinator.net'),
+(24, 'Lorazepam', 774, 861, 40, 'Corrupti ', '3249product_06.png', 28, 'mazalahyw@mailinator.net'),
+(25, 'Losartan', 269, 670, 20, 'Incididunt', '3041product_04.png', 29, 'mazalahyw@mailinator.net'),
+(26, 'Lyrica', 736, 703, 71, 'Aspernatur', '9014product_05.png', 30, 'mazalahyw@mailinator.net'),
+(27, 'Meloxicam', 562, 530, 66, 'Suscipit s', '4009product_02.png', 31, 'mazalahyw@mailinator.net'),
+(28, 'Metformin', 33, 42, 46, 'Dolorem al', '5249product_04.png', 32, 'mazalahyw@mailinator.net'),
+(29, 'Metoprolol', 445, 913, 37, 'Possimus ', '549product_06.png', 32, 'mazalahyw@mailinator.net'),
+(30, 'Naproxen', 720, 142, 12, 'Est nihil', '8936hero_1.jpg', 33, 'mazalahyw@mailinator.net'),
+(31, 'Omeprazole', 890, 760, 60, 'Consequatu', '9024product_07_large.png', 34, 'mazalahyw@mailinator.net'),
+(32, 'Oxycodone', 677, 876, 43, 'Error est', '2296product_03.png', 35, 'mazalahyw@mailinator.net'),
+(33, 'Pantoprazole', 988, 200, 96, 'Non non mo', '8969products_1.png', 36, 'mazalahyw@mailinator.net'),
+(34, 'Lyrica', 692, 814, 91, 'Sint nulla', '204hero_1.jpg', 30, 'mazalahyw@mailinator.net'),
+(35, 'Lyrica', 327, 85, 95, 'Ut molesti', '8125product_05.png', 32, 'mazalahyw@mailinator.net'),
+(36, 'Prednisone', 597, 879, 30, 'Eveniet e', '4244product_01.png', 37, 'mazalahyw@mailinator.net'),
+(37, 'Tramadol', 136, 646, 30, 'Veniam fu', '1617product_07_large.png', 38, 'mazalahyw@mailinator.net'),
+(38, 'Trazodone', 885, 456, 24, 'Fugiat cup', '3369product_03.png', 39, 'mazalahyw@mailinator.net'),
+(39, 'Viagra', 731, 60, 95, 'Et duis un', '2670product_06.png', 40, 'mazalahyw@mailinator.net'),
+(40, 'Wellbutrin', 414, 772, 54, 'Soluta ab ', '6909product_07_large.png', 41, 'mazalahyw@mailinator.net'),
+(41, 'Xanax', 97, 292, 45, 'Doloribus ', '8315product_05.png', 41, 'mazalahyw@mailinator.net'),
+(42, 'Zoloft', 739, 350, 73, 'Unde cum d', '8941Paracetamol_Tablets_500mg_-_32_Tablets_(Brand_May_Vary)_31.jpg', 42, 'mazalahyw@mailinator.net'),
+(43, 'Atenolol', 291, 316, 81, 'Consequunt', '4125products_1.png', 43, 'mazalahyw@mailinator.net'),
+(44, 'Atropine', 740, 930, 77, 'Ad cupidat', '1740hero_1.jpg', 44, 'mazalahyw@mailinator.net'),
+(45, 'Aleve', 715, 594, 30, 'Veniam te', '2139product_01.png', 45, 'mazalahyw@mailinator.net'),
+(46, 'Azelastine', 555, 918, 32, 'Adipisci c', '1259product_05.png', 46, 'mazalahyw@mailinator.net'),
+(47, 'Azithromycin ophthalmic', 767, 691, 87, 'Eos conse', '2754product_06.png', 47, 'mazalahyw@mailinator.net'),
+(48, 'Aztreonam', 146, 563, 6, 'Voluptates', '6534product_02.png', 48, 'mazalahyw@mailinator.net'),
+(49, 'Azuphen MB', 556, 885, 76, 'Illo labor', '7879product_06.png', 49, 'mazalahyw@mailinator.net'),
+(50, 'Azilsartan Kamedoxomil', 708, 831, 67, 'Rerum eaqu', '4522hero_1.jpg', 50, 'mazalahyw@mailinator.net');
 
 -- --------------------------------------------------------
 
@@ -347,6 +373,12 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`catid`);
 
 --
+-- Indexes for table `chemist`
+--
+ALTER TABLE `chemist`
+  ADD PRIMARY KEY (`email`);
+
+--
 -- Indexes for table `clientregistration`
 --
 ALTER TABLE `clientregistration`
@@ -374,13 +406,13 @@ ALTER TABLE `subcategory`
 -- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `billID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `billID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `billdetail`
 --
 ALTER TABLE `billdetail`
-  MODIFY `billdetailid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `billdetailid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `category`
