@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 27, 2020 at 08:25 AM
+-- Generation Time: Jun 01, 2020 at 10:02 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -446,20 +446,20 @@ ALTER TABLE `bill`
 -- Constraints for table `billdetail`
 --
 ALTER TABLE `billdetail`
-  ADD CONSTRAINT `billdetail_ibfk_2` FOREIGN KEY (`productid`) REFERENCES `product` (`pid`),
-  ADD CONSTRAINT `billdetail_ibfk_3` FOREIGN KEY (`billid`) REFERENCES `bill` (`billID`);
+  ADD CONSTRAINT `billdetail_ibfk_2` FOREIGN KEY (`productid`) REFERENCES `product` (`pid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `billdetail_ibfk_3` FOREIGN KEY (`billid`) REFERENCES `bill` (`billID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `product`
 --
 ALTER TABLE `product`
-  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`subid`) REFERENCES `subcategory` (`subid`);
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`subid`) REFERENCES `subcategory` (`subid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `subcategory`
 --
 ALTER TABLE `subcategory`
-  ADD CONSTRAINT `subcategory_ibfk_1` FOREIGN KEY (`catid`) REFERENCES `category` (`catid`);
+  ADD CONSTRAINT `subcategory_ibfk_1` FOREIGN KEY (`catid`) REFERENCES `category` (`catid`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
